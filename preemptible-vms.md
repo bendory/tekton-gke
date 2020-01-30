@@ -1,5 +1,12 @@
 # Preemptible VMs
 
+Docs:
+
+* https://cloud.google.com/kubernetes-engine/docs/how-to/preemptible-vms
+* https://cloud.google.com/compute/docs/instances/preemptible
+* https://cloud.google.com/compute/docs/instances/create-start-preemptible-instance#best_practices
+* https://cloud.google.com/kubernetes-engine/docs/node-taints
+
 ## Advantages of Preemptible VMs
 
 Preemptible VMs cost **~80% less than** regular VMs. If you are comfortable with the limitations, using preemptible VMs can save a lot on costs.
