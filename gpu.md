@@ -1,10 +1,33 @@
 # Tekton and GPUs
 
-1. Create a cluster with GPUs:
-    * Create an autoscaling GPU node pool: https://cloud.google.com/kubernetes-engine/docs/how-to/gpus#gpu_pool
-1. Install nvidia drivers: https://cloud.google.com/kubernetes-engine/docs/how-to/gpus#installing_drivers
-1. Install Tekton and `tkn`
-1. Define and run a Task that prints information about available GPUs:
+Docs:
+
+* https://cloud.google.com/kubernetes-engine/docs/how-to/gpus
+
+## Setting up GPUs on your cluster
+
+Create a node pool with GPUs available:
+
+```
+gcloud container node-pools create gpu-pool \
+    --cluster=[CLUSTER-NAME] \
+    --accelerator=type=[GPU-TYPE],count=[NUMBER] \
+    --num-nodes=[NUM-NODES]
+```
+
+For example, `--accelerator=type=nvidia-tesla-p4,count=1` will make a node pool with one Tesla P4 GPU available per node.
+
+Install necessary nvidia drivers:
+
+```
+kubectl apply -f https://raw.githubusercontent.com/GoogleCloudPlatform/container-engine-accelerators/master/nvidia-driver-installer/cos/daemonset-preloaded.yaml
+```
+
+## Run a Task with GPUs
+
+Now that the node pool is created, you can run a TaskRun and tell the Kubernetes scheduler to make sure it runs on a node with GPUs available.
+
+This Task simply prints information about available GPUs:
 
 ```yaml
 apiVersion: tekton.dev/v1alpha1
@@ -20,11 +43,11 @@ spec:
        nvidia.com/gpu: 1
 ```
 
-Then, run the Task:
+Run this Task using `tkn`:
 
 ```yaml
 $ tkn task start -f gpu.yaml
-Taskrun started: gpu-run-cb6ws
+Taskrun started: gpu-cb6ws
 Waiting for logs to be available...
 [unnamed-0] + nvidia-smi
 [unnamed-0] Tue Jan  7 16:11:57 2020       
@@ -46,4 +69,4 @@ Waiting for logs to be available...
 [unnamed-0] +-----------------------------------------------------------------------------+
 ```
 
-This demonstrates that GPUs are attached and available to the TaskRun execution environment. Instead of running the nvidia/cuda image, you could run your own image that takes advantage of available GPUs.
+This demonstrates that GPUs are attached and available to the TaskRun execution environment. Instead of running the `nvidia/cuda` image, you could run your own image that takes advantage of available GPUs to train an ML model.
