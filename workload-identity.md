@@ -1,8 +1,14 @@
 # Tekton and Workload Identity
 
+Docs:
+
+* https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+
 ## Advantages of Workload Identity
 
-[GKE Workload Identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) lets you associate a Kubernetes Service Account (KSA) with a Google IAM Service Account (GSA), such that any API request to a Google API will be authorized as that KSA/GSA. This makes it very easy to define Tekton workloads that authorize as Google Service Accounts, for instance to read from and write to Google Cloud Storage or Google Container Registry, deploy to Cloud Run or Kubernetes Engine, publish or subscribe to Cloud Pub/Sub topics, encrypt/decrypt data using Cloud KMS, and much more.
+Workload Identity lets you associate a Kubernetes Service Account (KSA) with a Google IAM Service Account (GSA), such that any API request to a Google API will be authorized as that KSA/GSA.
+
+This makes it very easy to define Tekton workloads that authorize as Google Service Accounts, for instance to read from and write to Google Cloud Storage or Google Container Registry, deploy to Cloud Run or Kubernetes Engine, publish or subscribe to Cloud Pub/Sub topics, encrypt/decrypt data using Cloud KMS, and much more.
 
 ## Setting up Workload Identity
 
