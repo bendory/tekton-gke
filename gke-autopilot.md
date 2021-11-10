@@ -12,7 +12,8 @@ In GKE Autopilot, Nodes are not accessible to cluster users, and usage is billed
 
 GKE Autopilot also enables "Spot Pods", which are like [preemptible VMs](./preemptible-vms.md), but at the Pod level instead of the Node level.
 Spot Pods are billed at a 60-91% discount compared to normal Pods.
-At this time, for example, Spot Pods are $0.01335/CPU/hour, compared to the normal GKE Autopilot price of $0.0445/CPU/hour, a 70% discount.
+
+GKE Autopilot also enables [Workload Identity](./workload-identity.md).
 
 # Using GKE Autopilot with Tekton
 
