@@ -5,5 +5,6 @@ These are unofficial docs describing how to use [Google Kubernetes Engine](https
 * [Autoscaling Node Pools](autoscaling.md)
 * [GKE Autopilot](gke-autopilot.md)
 * [GPUs](gpu.md)
+* [Image Streaming](image-streaming.md)
 * [Preemptible VMs](preemptible-vms.md)
 * [Workload Identity](workload-identity.md)
