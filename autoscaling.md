@@ -26,7 +26,7 @@ You should keep an eye on the number of nodes you normally use at off-peak times
 When creating a cluster:
 
 ```
-gcloud beta container clusters create [CLUSTER NAME] \
+gcloud container clusters create [CLUSTER NAME] \
     --zone=[ZONE] \
     --enable-autoscaling --min-nodes=[MINIMUM] --max-nodes=[MAXIMUM] \
     --machine-type=[MACHINE TYPE]
@@ -39,7 +39,7 @@ This creates a cluster that will have a minimum number of nodes available, and w
 If for some reason autoscaling does not meet your needs after all, you can simply disable autoscaling and configure the constant number of nodes you need available.
 
 ```
-gcloud beta container clusters update [CLUSTER NAME] \
+gcloud container clusters update [CLUSTER NAME] \
     --zone=[ZONE] \
     --no-enable-autoscaling
     --num-nodes=[NODES]
