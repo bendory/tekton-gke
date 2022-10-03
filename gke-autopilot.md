@@ -17,12 +17,9 @@ GKE Autopilot also enables [Workload Identity](./workload-identity.md).
 
 # Using GKE Autopilot with Tekton
 
-At this time, you can't seem to create Autopilot clusters using `gcloud`, you have to use the Cloud Console instead.
+You can create an Autopilot cluster like this: `gcloud container clusters create-auto ...`; see [docs](https://cloud.google.com/sdk/gcloud/reference/container/clusters/create-auto).
 
-In order for Tekton's webhook validation to work correctly, you need to create a GKE Autopilot cluster at version v1.21.4 or later.
-At this time, this means selecting the **Rapid** release channel, instead of the default **Stable** release channel.
-
-After you create a GKE Autopilot cluster at version v1.21.4 or later, you can [install Tekton](https://tekton.dev/docs/pipelines/install/) in the normal manner.
+After you create your GKE Autopilot cluster, you can [install Tekton](https://tekton.dev/docs/pipelines/install/) in the normal manner.
 
 ## Using Spot Pods
 
