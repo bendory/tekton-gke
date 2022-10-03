@@ -38,11 +38,11 @@ Selecting smaller machine types can also limit the impact of a preemption, since
 To create a cluster with a small number of non-preemptible nodes and a larger autoscaling pool of preemptible nodes, run this script:
 
 ```
-gcloud beta container clusters create [CLUSTER NAME] \
+gcloud container clusters create [CLUSTER NAME] \
     --zone=[ZONE] \
     --num-nodes=3 \
     --machine-type=[MACHINE TYPE]
-gcloud beta container node-pools create preemptible-pool \
+gcloud container node-pools create preemptible-pool \
     --preemptible \
     --cluster [CLUSTER NAME] \
     --zone=[ZONE] \
@@ -56,7 +56,7 @@ gcloud beta container node-pools create preemptible-pool \
 If for some reason preemptible VMs do not meet your needs after all, you can simply remove the node pool of preemptible VMs and increase the size of the default node pool.
 
 ```
-gcloud beta container node-pools delete preemptible-pool \
+gcloud container node-pools delete preemptible-pool \
     --cluster [CLUSTER NAME] \
     --zone=[ZONE]
 ```
@@ -64,7 +64,7 @@ gcloud beta container node-pools delete preemptible-pool \
 And, to increase the size of the default (non-preemptible) node pool:
 
 ```
-gcloud beta container clusters update [CLUSTER NAME] \
+gcloud container clusters update [CLUSTER NAME] \
     --zone=[ZONE] \
     --min-nodes=[NEW POOL SIZE]
 ```
